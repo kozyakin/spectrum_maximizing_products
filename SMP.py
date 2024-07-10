@@ -22,14 +22,11 @@ AUXFACTOR = 0.96
 
 MU = AUXFACTOR * (1 + KAPPA**2)**2 / (1 + KAPPA**2 + KAPPA**4)
 
-SMU = ''
-if AUXFACTOR != 1:
-    MU = round(MU, 2)
-    SMU = f'-{MU*100:.0f}'
+MUR = f'-{round(MU, 2)*100:.0f}'
 
 myfilename = os.path.splitext(Path(__file__).name)[0]
 myfilename = re.sub('[_-][0-9]+', '', myfilename)
-pdfout = re.sub('_', '-', myfilename) + SMU + '.pdf'
+pdfout = re.sub('_', '-', myfilename) + MUR + '.pdf'
 
 A0 = np.array([[0, -1 / KAPPA], [KAPPA, 2 * cos_a]])
 B0 = np.array([[0, -KAPPA], [1 / KAPPA, 2 * cos_a]])

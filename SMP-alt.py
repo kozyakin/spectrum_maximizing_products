@@ -23,10 +23,7 @@ AUXFACTOR = 0.96
 
 MU = 1.07  # Admissible interval 1.03208 <= mu <= 1.14346
 
-SMU = ''
-if AUXFACTOR != 1:
-    MU = round(MU, 2)
-    SMU = f'-{MU*100:.0f}'
+SMU = f'-{round(MU, 2)*100:.0f}'
 
 myfilename = os.path.splitext(Path(__file__).name)[0]
 myfilename = re.sub('[_-][0-9]+', '', myfilename)
