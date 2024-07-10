@@ -39,10 +39,8 @@ K = 3;
 % Normalizing B by fitting it into the unit ball of the Euclidean norm
 V = V / sqrt(max(V(:, 1).*V(:, 1)+V(:, 2).*V(:, 2)));
 
-% Removing duplicate verices from V and cyclicaly reorder them.
-% This is suspicious behavior of JSR Toolbox: as far as I understood from
-% the description, JSR Toolbox should not create duplicate vertices!
-S = convhull(polyshape(round(V, 6), 'Simplify', false));
+% Cyclicaly reorder verices from V.
+S = convhull(polyshape(V));
 V = S.Vertices;
 %
 fprintf('Normalized cyclically ordered list of vertices:\n\n');
@@ -50,10 +48,10 @@ fprintf('{%9.6f, %9.6f}\n', V.');
 
 % Plotting
 AV = V * transpose(A);
-AS = convhull(polyshape(AV, 'Simplify', false));
+AS = convhull(polyshape(AV));
 
 BV = V * transpose(B);
-BS = convhull(polyshape(BV, 'Simplify', false));
+BS = convhull(polyshape(BV));
 
 plot(S, 'FaceColor', '#e0e0e0', 'LineWidth', 1);
 hold on
