@@ -18,7 +18,7 @@ theta = (2 * np.pi) / 3
 cos_a = np.cos(theta)
 sin_a = np.sin(theta)
 KAPPA = 1.1**3
-AUXFACTOR = 1.07
+AUXFACTOR = 1.05
 
 MU = AUXFACTOR * (1 + KAPPA**2)**2 / (1 + KAPPA**2 + KAPPA**4)
 
