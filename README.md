@@ -8,7 +8,7 @@
 
 Эти скрипты на языке Wolfram Mathematica осуществляет символьные преобразования матричных произведений, необходимые для построения экстремальной нормы, с помощью которой доказывается, что  матричные произведения BAA и BBA действительно максимизируют спектр.
 
-## SMP.py.SMP-alt.py 
+## SMP.py/SMP-alt.py 
 
 Эти скрипты на языке Python предназначены для визуализации единичного шара S построенной экстремальной нормы и его образов AS и BS.
 
@@ -16,7 +16,7 @@
 
 Эти скрипты на языке Python предназначены для визуализации единичного шара S построенной экстремальной нормы и его образов AS и BS с помощью построения нормы Барабанова.
 
-## SMP_JSRToolbox.m/ SMP_alt_JSRToolbox.m 
+## SMP_JSRToolbox.m/SMP_alt_JSRToolbox.m 
 
 Эти скрипты на языке MATLAB реализуют попытку доказательства того, что матричные произведения BAA и BBA максимизируют спектр, с помощью применения JSR Toolbox из MATLAB Central.
 
@@ -34,7 +34,7 @@ The main ones in the proposed set of scripts are
 
 These Wolfram Mathematica scripts perform the symbolic matrix product transformations needed to construct the extremal norm, which proves that BAA and BBA are actually spectrum maximizing products.
 
-## SMP.py.SMP-alt.py 
+## SMP.py/SMP-alt.py 
 
 These Python scripts are designed to visualize the unit ball S of the constructed extreme norm and its images AS and BS.
 
@@ -42,7 +42,7 @@ These Python scripts are designed to visualize the unit ball S of the constructe
 
 These Python scripts are designed to visualize the unit ball S of the constructed extremal norm and its images AS and BS using the construction of the Barabanov norm.
 
-## SMP_JSRToolbox.m/ SMP_alt_JSRToolbox.m 
+## SMP_JSRToolbox.m/SMP_alt_JSRToolbox.m 
 
 These MATLAB scripts attempt to prove that the matrix products BAA and BBA are spectrum maximizing using the JSR Toolbox from MATLAB Central.
 
