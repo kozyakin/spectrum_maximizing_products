@@ -94,7 +94,7 @@ U_BOUND = 2.2
 THETA = (2. * math.pi) / 3.
 COS_THETA = math.cos(THETA)
 SIN_THETA = math.sin(THETA)
-LAMBDA = 1.331
+LAMBDA = 1.1**3
 
 X_INIT_0 = 1.  # 0.5
 X_INIT_1 = 1.
@@ -384,7 +384,7 @@ else:
 t_plot_fig3 = time.time() - t_tick
 pyplot.show()
 
-# Calculating index sequence
+# Calculating matrix sequence
 
 t_tick = time.time()
 
@@ -395,7 +395,7 @@ F01 = 0.
 F10 = 0.
 F11 = 0.
 x = np.asarray([X_INIT_0, X_INIT_1])
-index_seq = []
+matrix_seq = []
 
 for i in range(LEN_TRAJECTORY):
     x = x / polygonal_norm(x[0], x[1], h0)
@@ -404,28 +404,28 @@ for i in range(LEN_TRAJECTORY):
     if (polygonal_norm(x0[0], x0[1], h0) >
             polygonal_norm(x1[0], x1[1], h0)):
         x = x0
-        index_seq.append('0')
+        matrix_seq.append('A')
         F0 += 1
     else:
         x = x1
-        index_seq.append('1')
+        matrix_seq.append('B')
         F1 += 1
     if i > 0:
-        if ((index_seq[i - 1] == '0') and (index_seq[i] == '0')):
+        if ((matrix_seq[i - 1] == 'A') and (matrix_seq[i] == 'A')):
             F00 += 1
-        if ((index_seq[i - 1] == '0') and (index_seq[i] == '1')):
+        if ((matrix_seq[i - 1] == 'A') and (matrix_seq[i] == 'B')):
             F01 += 1
-        if ((index_seq[i - 1] == '1') and (index_seq[i] == '0')):
+        if ((matrix_seq[i - 1] == 'B') and (matrix_seq[i] == 'A')):
             F10 += 1
-        if ((index_seq[i - 1] == '1') and (index_seq[i] == '1')):
+        if ((matrix_seq[i - 1] == 'B') and (matrix_seq[i] == 'B')):
             F11 += 1
 
-print('\nExtremal index sequence: ', end='')
+print('\nExtremal matrix sequence: ', end='')
 for i in range(NUM_SYMB):
-    print(index_seq[i], end='')
+    print(matrix_seq[i], end='')
 
-print('\n\nFrequences of symbols 0, 1, 00, 01 etc. in the index sequence:',
-      '\n\nSymbols:       0      1      00     01     10     11')
+print('\n\nFrequences of matrices A, B, AA, AB etc. in the matrix sequence:',
+      '\n\nMatrices:       A      B      AA     AB     BA     BB')
 
 print('Frequences: ',
       f' {round(F0 / LEN_TRAJECTORY, 3):.3f}',
@@ -437,7 +437,7 @@ print('Frequences: ',
 np.set_printoptions(suppress=True)
 print(p0)
 
-t_index_seq = time.time() - t_tick
+t_matrix_seq = time.time() - t_tick
 
 # Saving plots to pdf-files
 
@@ -452,7 +452,7 @@ fig3.savefig(f'etraj-{THETA:.2f}-{THETA:.2f}-{LAMBDA:.2f}.pdf',
 
 # Computation timing
 
-t_compute = T_BARNORM_COMP + t_index_seq
+t_compute = T_BARNORM_COMP + t_matrix_seq
 t_plot = t_plot_fig1 + t_plot_fig2 + t_plot_fig3
 t_total = t_ini + t_plot + t_compute
 
