@@ -170,6 +170,11 @@ while True:
     h0 = shapely.affinity.scale(h0, xfact=scale0, yfact=scale0)
 
     if (rho_max - rho_min) < TOL:
+        tmp_geom = np.array(MultiPoint(h0.boundary.coords).geoms)
+        tmp_list = []
+        for pp in tmp_geom:
+            tmp_list.append([pp.x, pp.y])
+        p0 = np.array(tmp_list)
         break
 
 # Plotting Barabanov norm
@@ -434,12 +439,7 @@ print('Frequences: ',
       f' {round(F10 / (LEN_TRAJECTORY - 1), 3):.3f}',
       f' {round(F11 / (LEN_TRAJECTORY - 1), 3):.3f}')
 np.set_printoptions(suppress=True)
-tmp_geom = np.array(MultiPoint(h0.boundary.coords).geoms)
-tmp_list = []
-for pp in tmp_geom:
-    tmp_list.append([pp.x, pp.y])
-p_fin = np.array(tmp_list)
-print('\nVertices (', len(p_fin)-1, '):\n', p_fin[0:-1])
+print('\nVertices (', len(p0)-1, '):\n', p0[0:-1])
 
 t_matrix_seq = time.time() - t_tick
 
