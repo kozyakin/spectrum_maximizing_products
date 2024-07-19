@@ -157,7 +157,7 @@ while True:
 
     h0 = h0.intersection(shapely.affinity.scale(h12, xfact=rho, yfact=rho))
     h0 = h0.simplify(tolerance=TOL)
-  
+
     T_BARNORM_COMP += (time.time() - t_tick)
 
     NITER += 1
@@ -439,7 +439,7 @@ tmp_list = []
 for pp in tmp_geom:
     tmp_list.append([pp.x, pp.y])
 p_fin = np.array(tmp_list)
-print('\nVertices (',len(p_fin)-1,'):\n',p_fin[0:-1])
+print('\nVertices (', len(p_fin)-1, '):\n', p_fin[0:-1])
 
 t_matrix_seq = time.time() - t_tick
 
