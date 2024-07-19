@@ -2,8 +2,7 @@
 """Proving SMP for rotation-like matrices.
 
 Created on Sat Sep 21 12:37:46 2019.
-Last updated on Mon Jun 17 10:57:45 2024 +0300
-Make compatible with Shapely v2.0
+Last updated on Fri Jul 19 14:04:12 2024 +0300
 
 @author: Victor Kozyakin
 """
@@ -84,7 +83,7 @@ def matrix_angular_coord(_a, _t):
 t_tick = time.time()
 T_BARNORM_COMP = 0.
 
-TOL = 1e-8
+TOL = 1e-6
 ANGLE_STEP = 0.01
 LEN_TRAJECTORY = 10000
 NUM_SYMB = 50
@@ -155,7 +154,7 @@ while True:
 
     h0 = h0.intersection(shapely.affinity.scale(h12, xfact=rho, yfact=rho))
     h0 = h0.simplify(tolerance=TOL)
-
+   
     T_BARNORM_COMP += (time.time() - t_tick)
 
     NITER += 1
@@ -432,7 +431,12 @@ print('Frequences: ',
       f' {round(F10 / (LEN_TRAJECTORY - 1), 3):.3f}',
       f' {round(F11 / (LEN_TRAJECTORY - 1), 3):.3f}')
 np.set_printoptions(suppress=True)
-print(p0)
+tmp_geom = np.array(MultiPoint(h0.boundary.coords).geoms)
+tmp_list = []
+for pp in tmp_geom:
+    tmp_list.append([pp.x, pp.y])
+p_fin = np.array(tmp_list)
+print('\nVertices (',len(p_fin)-1,'):\n',p_fin[0:-1])
 
 t_matrix_seq = time.time() - t_tick
 
