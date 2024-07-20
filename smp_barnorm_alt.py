@@ -2,7 +2,7 @@
 """Proving SMP for rotation-like matrices (alt case).
 
 Created on Sat Sep 21 12:37:46 2019.
-Last updated on Fri Jul 19 14:04:20 2024 +0300
+Last updated on Sun Jul 21 02:21:55 2024 +0300
 
 @author: Victor Kozyakin
 """
@@ -134,11 +134,7 @@ NITER = 0.
 while True:
     t_tick = time.time()
 
-    tmp_geom = np.array(MultiPoint(h0.boundary.coords).geoms)
-    tmp_list = []
-    for pp in tmp_geom:
-        tmp_list.append([pp.x, pp.y])
-    p0 = np.array(tmp_list)
+    p0 = np.array(h0.boundary.coords)
 
     p1 = MultiPoint(np.matmul(p0, INV_AT))
     h1 = p1.convex_hull
@@ -170,11 +166,7 @@ while True:
     h0 = shapely.affinity.scale(h0, xfact=scale0, yfact=scale0)
 
     if (rho_max - rho_min) < TOL:
-        tmp_geom = np.array(MultiPoint(h0.boundary.coords).geoms)
-        tmp_list = []
-        for pp in tmp_geom:
-            tmp_list.append([pp.x, pp.y])
-        p0 = np.array(tmp_list)
+        p0 = np.array(h0.boundary.coords)
         break
 
 # Plotting Barabanov norm
@@ -182,20 +174,10 @@ while True:
 t_tick = time.time()
 
 h10 = shapely.affinity.scale(h1, xfact=rho, yfact=rho)
-tmp_geom = np.array(MultiPoint(h10.boundary.coords).geoms)
-tmp_list = []
-for pp in tmp_geom:
-    tmp_list.append([pp.x, pp.y])
-p10 = np.array(tmp_list)
-
+p10 = np.array(h10.boundary.coords)
 
 h20 = shapely.affinity.scale(h2, xfact=rho, yfact=rho)
-tmp_geom = np.array(MultiPoint(h20.boundary.coords).geoms)
-tmp_list = []
-for pp in tmp_geom:
-    tmp_list.append([pp.x, pp.y])
-p20 = np.array(tmp_list)
-
+p20 = np.array(h20.boundary.coords)
 
 bb = max(h0.bounds[2], h10.bounds[2], h20.bounds[2],
          h0.bounds[3], h10.bounds[3], h20.bounds[3])
