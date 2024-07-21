@@ -81,7 +81,7 @@ def matrix_angular_coord(_a, _t):
 # Initialization
 
 t_tick = time.time()
-T_BARNORM_COMP = 0.
+t_barnorm_comp = 0.
 
 TOL = 1e-6
 ANGLE_STEP = 0.01
@@ -154,7 +154,7 @@ while True:
     h0 = h0.intersection(shapely.affinity.scale(h12, xfact=rho, yfact=rho))
     h0 = h0.simplify(tolerance=TOL)
 
-    T_BARNORM_COMP += (time.time() - t_tick)
+    t_barnorm_comp += (time.time() - t_tick)
 
     NITER += 1
     print(f'{NITER:3.0f}.', f'{rho_min:.6f}', f'{rho:.6f}', f'{rho_max:.6f}',
@@ -438,7 +438,7 @@ fig3.savefig(f'etraj-{THETA:.2f}-{THETA:.2f}-{LAMBDA:.2f}.pdf',
 
 # Computation timing
 
-t_compute = T_BARNORM_COMP + t_matrix_seq
+t_compute = t_barnorm_comp + t_matrix_seq
 t_plot = t_plot_fig1 + t_plot_fig2 + t_plot_fig3
 t_total = t_ini + t_plot + t_compute
 
