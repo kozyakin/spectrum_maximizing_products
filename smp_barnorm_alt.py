@@ -81,7 +81,7 @@ def matrix_angular_coord(_a, _t):
 # Initialization
 
 t_tick = time.time()
-t_barnorm_comp = 0.
+t_barnorm_comp = float(0)
 
 TOL = 1e-6
 ANGLE_STEP = 0.01
