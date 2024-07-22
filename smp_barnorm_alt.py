@@ -214,11 +214,7 @@ ax1.plot(p0[:, 0], p0[:, 1], '-', color='black')
 pl10 = LineString(p10)
 pl20 = LineString(p20)
 h_int = shapely.affinity.scale(pl10.intersection(pl20), xfact=3, yfact=3)
-tmp_geom = np.array(h_int.geoms)
-tmp_list = []
-for pp in tmp_geom:
-    tmp_list.append([pp.x, pp.y])
-p_int = np.array(tmp_list)
+p_int = np.array([[pt.x, pt.y] for pt in h_int.geoms])
 
 arr_switch_N = np.size(p_int[:, 0])
 arr_switch_ang = np.empty(arr_switch_N)
