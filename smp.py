@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """An extremal norm S and its images AS and BS
 
-Created on Fri Jul 5 13:46:28 2024 +0300.
+Created on 2024-07-05 13:46:28 +0300.
 
 @author: Victor Kozyakin
 """
