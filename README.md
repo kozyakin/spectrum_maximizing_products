@@ -20,7 +20,7 @@ These Python scripts are designed to visualize the unit ball S of the constructe
 
 These MATLAB scripts attempt to prove that the matrix products BAA and BBA are spectrum maximizing using the JSR Toolbox from MATLAB Central.
 
-## PDF-файлы
+## PDF files
 
 These files provide examples of the operation of the above scripts.
 
