@@ -74,7 +74,7 @@ def matrix_angular_coord(_a, _t):
     _vec_t = np.asarray([_cos_t, _sin_t])
     _vec_t_transpose = np.transpose(_vec_t)
     _rot_back = np.asarray([[_cos_t, _sin_t],  [-_sin_t, _cos_t]])
-    _vec_a = np.matmul(np.matmul(_rot_back, _a), _vec_t_transpose)
+    _vec_a = _rot_back @ _a @ _vec_t_transpose
     return _t + math.atan2(_vec_a[1], _vec_a[0])
 
 
@@ -133,10 +133,10 @@ while True:
 
     p0 = np.array(h0.boundary.coords)
 
-    p1 = MultiPoint(np.matmul(p0, INV_AT))
+    p1 = MultiPoint(p0 @ INV_AT)
     h1 = p1.convex_hull
 
-    p2 = MultiPoint(np.matmul(p0, INV_BT))
+    p2 = MultiPoint(p0 @ INV_BT)
     h2 = p2.convex_hull
 
     h12 = h1.intersection(h2)
@@ -232,10 +232,10 @@ pyplot.show()
 t_tick = time.time()
 
 AT0 = (1./rho_min) * AT
-p10 = np.array(np.matmul(p0, AT0))
+p10 = np.array(p0 @ AT0)
 
 BT0 = (1./rho_min) * BT
-p20 = np.array(np.matmul(p0, BT0))
+p20 = np.array(p0 @ BT0)
 
 # Plotting Barabanov's norm
 
@@ -297,8 +297,8 @@ else:
 
 for i in range(LEN_TRAJECTORY):
     xprev = x
-    x0 = np.matmul(x, AT)
-    x1 = np.matmul(x, BT)
+    x0 = x @ AT
+    x1 = x @ BT
     if (polygonal_norm(x0[0], x0[1], h0) >
             polygonal_norm(x1[0], x1[1], h0)):
         x = x0
@@ -378,8 +378,8 @@ matrix_seq = []
 
 for i in range(LEN_TRAJECTORY):
     x = x / polygonal_norm(x[0], x[1], h0)
-    x0 = np.matmul(x, AT)
-    x1 = np.matmul(x, BT)
+    x0 = x @ AT
+    x1 = x @ BT
     if (polygonal_norm(x0[0], x0[1], h0) >
             polygonal_norm(x1[0], x1[1], h0)):
         x = x0
