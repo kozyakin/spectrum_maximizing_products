@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Proving SMP for rotation-like matrices (alt case).
 
-Created on 2019-09-21 12:37:46 +0300.
-Last updated on 2024-07-05 13:46:28 +0300
+Relised on   2019-09-21 12:37:46 +0300.
+Last updated 2024-07-05 13:46:28 +0300
 
 @author: Victor Kozyakin
 """
