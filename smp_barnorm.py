@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Proving SMP for rotation-like matrices.
 
-Relised on   2019-09-21 12:37:46 +0300.
+Released on  2019-09-21 12:37:46 +0300.
 Last updated 2024-07-05 13:46:28 +0300
 
 @author: Victor Kozyakin
